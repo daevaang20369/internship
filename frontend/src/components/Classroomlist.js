@@ -4,7 +4,7 @@ import axios from 'axios';
 const ClassroomsList = () => {
     const [classrooms, setClassrooms] = useState([]);
     const [error, setError] = useState(null);
-    const route = "https://internship-ruzj-git-main-daevaang20369s-projects.vercel.app";
+    const route = "https://internship-1-oex1.onrender.com";
 
     useEffect(() => {
         const fetchClassrooms = async () => {

@@ -10,7 +10,7 @@ const Dashboard = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isStudent, setIsStudent] = useState(false);
-    const route = "https://internship-ruzj-git-main-daevaang20369s-projects.vercel.app";
+    const route = "https://internship-1-oex1.onrender.com";
     const navigate = useNavigate();
     const fetchData = async () => {
         try {
