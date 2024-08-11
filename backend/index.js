@@ -12,7 +12,7 @@ const PORT = 5000;
 app.use(bodyParser.json());
 app.use(cors());
 app.det('/', async (req, res) => {
-    res.json({"HIi"})
+    res.json("HIi")
 });
 app.post('/api/login', async (req, res) => {
     console.log(req.body)
