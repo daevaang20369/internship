@@ -11,7 +11,9 @@ const PORT = process.env.PORT || 5000;
 
 app.use(bodyParser.json());
 app.use(cors());
-
+app.det('/', async (req, res) => {
+    res.json({"HIi"})
+});
 app.post('/api/login', async (req, res) => {
     console.log(req.body)
   const { email, password } = req.body;
