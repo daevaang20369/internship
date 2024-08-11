@@ -7,7 +7,7 @@ const CreateClassroom = () => {
     const [selectedStudents, setSelectedStudents] = useState([]);
     const [className, setClassName] = useState('');
     const navigate = useNavigate();
-    const route = "https://internship-1rc6.vercel.app/";
+    const route = "https://internship-ruzj-git-main-daevaang20369s-projects.vercel.app";
     const [schedule, setSchedule] = useState({
         Monday: { start: '', end: '' },
         Tuesday: { start: '', end: '' },
