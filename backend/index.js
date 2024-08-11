@@ -7,7 +7,7 @@ const bcrypt = require('bcryptjs');
 const {User, Classroom} = require('./mongoose')
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 app.use(bodyParser.json());
 app.use(cors());
