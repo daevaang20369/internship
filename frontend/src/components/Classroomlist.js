@@ -4,7 +4,7 @@ import axios from 'axios';
 const ClassroomsList = () => {
     const [classrooms, setClassrooms] = useState([]);
     const [error, setError] = useState(null);
-    const route = "http://localhost:5000";
+    const route = "https://internship-1rc6.vercel.app/";
 
     useEffect(() => {
         const fetchClassrooms = async () => {

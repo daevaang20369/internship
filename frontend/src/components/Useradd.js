@@ -14,7 +14,7 @@ const Useradd = () => {
   const [success, setsucess] = useState('')
   const [error, setError]  = useState('');
   const { authuser, setauthuser, setisloggedin , isloggedin } = useAuth(); // Ensure hook name matches
-  const route = "http://localhost:5000";  
+  const route = "https://internship-1rc6.vercel.app/";  
   const navigate = useNavigate()
   const handlechange =(event) =>{
     setrole()

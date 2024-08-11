@@ -5,7 +5,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 const Edituser = () => {
     const { id } = useParams(); 
     const navigate = useNavigate();
-    const route = "http://localhost:5000";
+    const route = "https://internship-1rc6.vercel.app/";
 
     const [email, setEmail] = useState("");
     const [role, setRole] = useState("");
