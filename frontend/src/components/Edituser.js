@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import api from './Apiroute';
 
 const Edituser = () => {
     const { id } = useParams(); 
     const navigate = useNavigate();
-    const route = "https://internship-1-oex1.onrender.com";
-
     const [email, setEmail] = useState("");
     const [role, setRole] = useState("");
     const [name, setName] = useState("");
@@ -17,7 +16,7 @@ const Edituser = () => {
 
     const getData = async () => {
         try {
-            const response = await axios.get(`${route}/api/getbyid/${id}`);
+            const response = await axios.get(`${api}/api/getbyid/${id}`);
             const { name, age, dob, email, role } = response.data.user;
             console.log(response.data)
             setName(name);
@@ -38,7 +37,7 @@ const Edituser = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await axios.post(`${route}/api/updateuser`, {
+            const response = await axios.post(`${api}/api/updateuser`, {
                 id,
                 name,
                 age,

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../Context/AuthContext'; // Ensure hook name matches
 import { Navigate, useNavigate } from 'react-router-dom';
+import api from './Apiroute';
 
 const Useradd = () => {
   const [email, setEmail] = useState('');
@@ -14,7 +15,6 @@ const Useradd = () => {
   const [success, setsucess] = useState('')
   const [error, setError]  = useState('');
   const { authuser, setauthuser, setisloggedin , isloggedin } = useAuth(); // Ensure hook name matches
-  const route = "https://internship-1-oex1.onrender.com";  
   const navigate = useNavigate()
   const handlechange =(event) =>{
     setrole()
@@ -23,7 +23,7 @@ const Useradd = () => {
     event.preventDefault();
     if( password == repassword){
         try {
-            const response = await axios.post(`${route}/api/adduser`, {name, age,dob,email, password,role});
+            const response = await axios.post(`${api}/api/adduser`, {name, age,dob,email, password,role});
             const res = response.data.message;
             setsucess(res)
           } catch (error) {

@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import api from './Apiroute';
 
 const CreateClassroom = () => {
     const [students, setStudents] = useState([]);
     const [selectedStudents, setSelectedStudents] = useState([]);
     const [className, setClassName] = useState('');
     const navigate = useNavigate();
-    const route = "https://internship-1-oex1.onrender.com";
     const [schedule, setSchedule] = useState({
         Monday: { start: '', end: '' },
         Tuesday: { start: '', end: '' },
@@ -19,7 +19,7 @@ const CreateClassroom = () => {
     });
 
     useEffect(() => {
-        axios.get(`${route}/api/getstudent`)
+        axios.get(`${api}/api/getstudent`)
             .then(response => setStudents(response.data))
             .catch(error => console.error('Error fetching students:', error));
     }, []);
@@ -54,9 +54,9 @@ const CreateClassroom = () => {
         };
 
         try {
-            await axios.post(`${route}/api/createclassroom`, classroomData);
-            // alert('Classroom created successfully');
-            // navigate('/dashboard'); // Redirect to the dashboard or another page
+            await axios.post(`${api}/api/createclassroom`, classroomData);
+            alert('Classroom created successfully');
+            navigate('/dashboard'); // Redirect to the dashboard or another page
         } catch (error) {
             console.error('Error creating classroom:', error);
         }

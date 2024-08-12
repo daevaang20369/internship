@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../Context/AuthContext'; // Ensure hook name matches
 import { Navigate, useNavigate } from 'react-router-dom';
+import api from './Apiroute';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError]  = useState('');
-  const { setauthuser, setisloggedin , isloggedin } = useAuth(); // Ensure hook name matches
-  const route = "https://internship-1-oex1.onrender.com";  
+  const { setauthuser, setisloggedin , isloggedin } = useAuth(); // Ensure hook name matches 
   const navigate = useNavigate()
   const handleSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const response = await axios.post(`${route}/api/login`, { email, password });
+      const response = await axios.post(`${api}/api/login`, { email, password });
       const res = response.data;
       console.log("hiii")
       setisloggedin(true);

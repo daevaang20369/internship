@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import api from './Apiroute';
+
 
 const ClassroomsList = () => {
     const [classrooms, setClassrooms] = useState([]);
     const [error, setError] = useState(null);
-    const route = "https://internship-1-oex1.onrender.com";
-
     useEffect(() => {
         const fetchClassrooms = async () => {
             try {
-                const response = await axios.get(`${route}/api/classrooms`);
+                const response = await axios.get(`${api}/api/classrooms`);
                 setClassrooms(response.data);
             } catch (error) {
                 console.error('Error fetching classrooms:', error);
@@ -33,7 +33,7 @@ const ClassroomsList = () => {
                     <li className="list-group-item" key={classroom._id}>
                         <h4>{classroom.name}</h4>
                         <p><strong>Students:</strong> {classroom.students.filter(user => user.role === 'student').map(student => student.name).join(', ')}</p>
-                        <p><strong>Teachers:</strong> {classroom.teachers.filter(user => user.role === 'teacher').map(teacher => teacher.name).join(', ')}</p>
+                        {/* <p><strong>Teachers:</strong> {classroom.teachers.filter(user => user.role === 'teacher').map(teacher => teacher.name).join(', ')}</p> */}
                         <div>
                             <strong>Schedule:</strong>
                             <ul>

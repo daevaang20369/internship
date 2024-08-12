@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../Context/AuthContext';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import api from './Apiroute';
 
 const Dashboard = () => {
     const { authuser } = useAuth();
@@ -10,13 +11,13 @@ const Dashboard = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [isStudent, setIsStudent] = useState(false);
-    const route = "https://internship-1-oex1.onrender.com";
+
     const navigate = useNavigate();
     const fetchData = async () => {
         try {
             const [teachersResponse, studentsResponse] = await Promise.all([
-                axios.get(`${route}/api/getteacher`),
-                axios.get(`${route}/api/getstudent`)
+                axios.get(`${api}/api/getteacher`),
+                axios.get(`${api}/api/getstudent`)
             ]);
             setData(teachersResponse.data);
             setdatat(studentsResponse.data);
@@ -36,11 +37,11 @@ const Dashboard = () => {
         
 
         fetchData();
-    }, [authuser, route]);
+    }, [authuser, api]);
 
     const deleteEntry = async (id) => {
         try {
-            await axios.get(`${route}/api/datadelete/${id}`);
+            await axios.get(`${api}/api/datadelete/${id}`);
             await fetchData(); // Refresh data after deletion
         } catch (error) {
             console.error('There was an error deleting the entry!', error);
