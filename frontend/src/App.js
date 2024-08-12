@@ -10,6 +10,7 @@ import Useradd from './components/Useradd';
 import Edituser from './components/Edituser';
 import CreateClassroom from './components/Createclassroom';
 import ClassroomsList from './components/Classroomlist';
+import Assignteacher from './components/Assignteacher';
 
 function App() {
   return (
@@ -23,6 +24,8 @@ function App() {
         <Route path="edituser/:id" element={<Edituser/>} />
         <Route path="createclassroom" element={<CreateClassroom/>} />
         <Route path="classrooms" element={<ClassroomsList />} />
+        <Route path="assignteacher/:id" element={<Assignteacher />} />
+
       </Route>
     </Routes>
   );

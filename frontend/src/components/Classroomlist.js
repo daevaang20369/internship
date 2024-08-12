@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import api from './Apiroute';
+import { useAuth } from '../Context/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 
 const ClassroomsList = () => {
     const [classrooms, setClassrooms] = useState([]);
     const [error, setError] = useState(null);
+    const {authuser} = useAuth();
+    const navigate = useNavigate();
+
     useEffect(() => {
         const fetchClassrooms = async () => {
             try {
@@ -16,7 +21,6 @@ const ClassroomsList = () => {
                 setError('Failed to fetch classrooms.');
             }
         };
-
         fetchClassrooms();
     }, []);
 
@@ -33,7 +37,13 @@ const ClassroomsList = () => {
                     <li className="list-group-item" key={classroom._id}>
                         <h4>{classroom.name}</h4>
                         <p><strong>Students:</strong> {classroom.students.filter(user => user.role === 'student').map(student => student.name).join(', ')}</p>
-                        {/* <p><strong>Teachers:</strong> {classroom.teachers.filter(user => user.role === 'teacher').map(teacher => teacher.name).join(', ')}</p> */}
+                        <p>
+                        <strong>Teachers:</strong> 
+                        {classroom.teachers
+                            ? classroom.teachers.name
+                            : 'No teachers assigned'}
+                            
+                        </p>{authuser?.user?.role === "principal" && <button onClick={(e)=>{navigate(`/assignteacher/${classroom._id}`)}} className='btn btn-primary'> Assign teacher</button>}
                         <div>
                             <strong>Schedule:</strong>
                             <ul>

@@ -42,6 +42,23 @@ app.get('/api/getteacher', async(req,res)=>{
     res.status(500).json({ message: 'Server error' });
   }
 })
+app.post('/api/assignteacher/:classroomId', async (req, res) => {
+  console.log("hiii")
+  const { classroomId } = req.params;
+  const { teacher } = req.body; // Single teacher ID
+
+  try {
+    const updatedClassroom = await Classroom.findByIdAndUpdate(
+      classroomId,
+      { $set: { teachers: teacher } }, // Update with single teacher ID
+      { new: true }
+    );
+    res.json({ message: 'Teacher assigned successfully', classroom: updatedClassroom });
+  } catch (error) {
+    console.error('Error assigning teacher:', error);
+    res.status(500).json({ message: 'Internal server error' });
+  }
+});
 app.get('/api/classrooms', async (req, res) => {
   try {
     const classrooms = await Classroom.find()

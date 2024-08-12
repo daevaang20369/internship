@@ -50,6 +50,7 @@ const CreateClassroom = () => {
         const classroomData = {
             name: className,
             students: selectedStudents,
+            teachers:null,
             schedule, // Include the schedule in the submission
         };
 

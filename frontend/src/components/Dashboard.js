@@ -67,9 +67,9 @@ const Dashboard = () => {
                         <li className="nav-item active">
                             <a className="nav-link" href="/adduser">Add Student or Teacher</a>
                         </li>
-                        <li className="nav-item">
+                        {authuser?.user?.role === "principal" &&<li className="nav-item">
                             <a className="nav-link" href="/createclassroom">Create a classroom</a>
-                        </li>
+                        </li>}
                         <li className="nav-item">
                             <a className="nav-link" href="/classrooms">Classrooms</a>
                         </li>
